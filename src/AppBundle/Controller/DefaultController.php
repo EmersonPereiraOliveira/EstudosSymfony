@@ -4,7 +4,9 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\BrowserKit\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\EventListener\ResponseListener;
 
 class DefaultController extends Controller
 {
@@ -18,4 +20,13 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
     }
+
+    /**
+     * @Route("/hello/{name}")
+     */
+    public function helloAction($name){
+
+        return new \Symfony\Component\HttpFoundation\Response("Olá " . $name);
+    }
+
 }
