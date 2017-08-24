@@ -1,12 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<ul>
-    {% for p in posts %}
-    <div class="posts">
-        <h2>{{ p.getTitle() }}</h2>
-        {{ p.createdAt()|date("d/m/Y H:m:s") }}
+    <div class="container">
+        <a href="/posts/create" class="btn btn-primary pull-right">Criar Post</a>
+        <div>
+            {% for p in posts %}
+                <div class="posts">
+                    <h2><a href="/posts/edit/{{ p.getId() }}">{{ p.getTitle() }}</a></h2>
+                    <small>{{ p.createdAt()|date("d/m/Y H:m:s") }}</small><br>
+                    <p>{{ p.content }}</p>
+                </div>
+            {% endfor %}
+        </div>
     </div>
-    {% endfor %}
-</ul>
 {% endblock %}
