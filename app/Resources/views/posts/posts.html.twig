@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<ul>
+    {% for p in posts %}
+    <div class="posts">
+        <h2>{{ p.getTitle() }}</h2>
+        {{ p.createdAt()|date("d/m/Y H:m:s") }}
+    </div>
+    {% endfor %}
+</ul>
+{% endblock %}
